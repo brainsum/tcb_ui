@@ -1,0 +1,6 @@
+name: ChatBot User Interface
+type: module
+description: Block for connecting to the ChatBot implemented in the TCB project.
+core: 8.x
+package: Custom
+configure: tcb_ui.settings_form

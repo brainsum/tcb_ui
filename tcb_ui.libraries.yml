@@ -1,0 +1,10 @@
+connect_bot:
+  version: VERSION
+  css:
+    layout:
+      css/chatblock.css: {}
+  js:
+    js/ajax.js: {}
+  dependencies:
+    - core/drupal.form
+    - core/drupal.ajax

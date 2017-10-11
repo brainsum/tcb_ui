@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * TCB UI module file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function tcb_ui_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.block_content':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('ChatBot Interface.') . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tcb_ui_theme($existing, $type, $theme, $path) {
+  return [
+    'conversation_message' => [
+      'template' => 'conversation-message',
+      'variables' => [
+        'sender_class' => NULL,
+        'sender_name' => NULL,
+        'message' => NULL,
+      ],
+    ],
+  ];
+}

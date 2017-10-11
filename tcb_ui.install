@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Install file for the module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function tcb_ui_install() {
+  $defaultTheme = \Drupal::config('system.theme')->get('default');
+  $values = [
+    'id' => 'chatblock',
+    'plugin' => 'chat_block',
+    'region' => 'content',
+    'settings' => [
+      'label' => 'Chat Block',
+      'label_display' => 0,
+      'id' => 'chat_block',
+      'provider' => 'tcb_ui',
+    ],
+    'theme' => $defaultTheme,
+    'visibility' => [
+      'user_role' => [
+        'id' => 'user_role',
+        'roles' => [
+          'authenticated' => 'authenticated',
+          'administrator' => 'administrator',
+        ],
+        'negate' => FALSE,
+        'context_mapping' => [
+          'user' => '@user.current_user_context:current_user',
+        ],
+      ],
+    ],
+    'dependencies' => [
+      'module' => [
+        'system',
+        'tcb_ui',
+      ],
+    ],
+    'weight' => -1,
+  ];
+  $blockStorage = \Drupal::entityTypeManager()->getStorage('block');
+  $block = $blockStorage->create($values);
+  $block->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function tcb_ui_uninstall() {
+  $blockStorage = \Drupal::entityTypeManager()->getStorage('block');
+  $block = $blockStorage->load('chatblock');
+  if (NULL !== $block) {
+    $blockStorage->delete([$block]);
+  }
+}

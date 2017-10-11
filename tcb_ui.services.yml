@@ -1,0 +1,4 @@
+services:
+  tcb_ui.chatbot_client:
+    class: Drupal\tcb_ui\Service\ChatBotClient
+    arguments: ['@entity_type.manager', '@http_client', '@logger.factory', '@config.factory', '@renderer']

@@ -1,0 +1,5 @@
+tcb_ui.settings_form:
+  title: 'ChatBot Settings'
+  description: 'Settings for the ChatBot UI module.'
+  parent: system.admin_config_services
+  route_name: tcb_ui.settings_form
