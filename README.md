@@ -1,4 +1,27 @@
 # ChatBot User Interface
+## Installation
+### Composer
+- Add this as a repository in your composer.json file
+```
+{
+    "type": "package",
+    "package": {
+        "name": "brainsum/tcb_ui",
+        "version": "0.1.0",
+        "type": "drupal-module",
+        "source": {
+            "url": "https://github.com/brainsum/tcb_ui",
+            "type": "git",
+            "reference": "master"
+        }
+    }
+}
+```
+
+- Require as a dependency
+```composer require brainsum/tcb_ui```
+- Then enable the module
+
 ## Usage
 - Add the necessary configuration on the settings form
 - Make sure to have the bot endpoint available
